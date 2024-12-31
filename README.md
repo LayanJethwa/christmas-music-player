@@ -1,11 +1,63 @@
-This is a Christmas website I made, that plays Christmas music to you!  
-It is written using pure (vanilla) HTML, CSS and JS.  
-You can access it at:  
 
-There is also a helper Python script, which reads metadata from the audio files provided, and then stores it in a text file so that the JavaScript can read it in easily.  
+# Christmas Music Player
+
+This is a Christmas website I made, that plays Christmas music to you!
+
+It is written using pure (vanilla) HTML, CSS and JS.
+
+*Created for Hack Club's Winter boba drops programme!*
+## Demo
+You can access the site here:
+https://layanjethwa.github.io/christmas-music-player/
 
 
-If you would like to add your own music, you can clone the repo, then upload any mp3 file to the christmas-music folder. Run the Python file to regenerate the data files, then you can run the website as normal.  
-If you want to add a different folder, you can upload all the music in a folder to the root directory after cloning. You then update the variables in the Python and JS to reflect the new folder name, run the Python file, and then run the website.  
+## Features
 
-Enjoy!
+- Basic controls (play/pause, next/prev track)
+- Toggle shuffle mode
+- Dynamic seekbar, click to change position
+- Pulls title, artist, duration, and album art from track metadata
+    - Uses 1 of 9 default images for album art if not found
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/LayanJethwa/christmas-music-player
+```
+
+Go to the project directory
+
+```bash
+  cd christmas-music-player
+```
+Start the server
+
+```bash
+  python -m http.server
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Then navigate to *localhost:8000*
+
+
+## Adding music
+- Upload your mp3 files to the christmas-music folder within the root directory  
+  - **OR** create a new folder in the root directory with the music in, then on line **13** of the Python script, and line **19** of the JavaScript file, change *"christmas-music"* to your new folder name
+
+- Install dependencies
+
+  ```bash
+  pip install tinytag
+  pip install pillow
+  ```
+
+- Run the Python script (*get_music.py*)
+
+  ```bash
+  python -m get_music.py
+  ```
+## Changing default images
+If you wish to change the default images displayed when album art is not found, edit the contents of the folder */data/images/default* as desired.
+
+You will also need to edit the variable *default_len* to reflect the number of files in that folder; this can be found on line **17** of the JavaScript file.
