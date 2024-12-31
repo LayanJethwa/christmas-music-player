@@ -20,8 +20,12 @@ let folder = "christmas-music"
 let shuffle_index = 0
 const fetchData = async (pathToFile) => {
     const response = await fetch(pathToFile);
-    const text = await response.text();
-    arr = text.split('\n');
+    text = await response.text();
+    if (text.includes('\r')) {
+        arr = text.split('\r\n');
+    } else {
+        arr = text.split('\n')
+    }
 };
 
 async function loadFiles(){
@@ -39,9 +43,9 @@ async function loadFiles(){
     title.innerHTML = titles[shuffle_array[shuffle_index]]
     artist.innerHTML = artists[shuffle_array[shuffle_index]]
     if (images[shuffle_array[shuffle_index]] == '1'){
-        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.jpg`
     } else if (images[shuffle_array[shuffle_index]] == '2'){
-        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.png`
     } else {
         art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
     }
@@ -71,9 +75,9 @@ nextClick = function(){
     title.innerHTML = titles[shuffle_array[shuffle_index]]
     artist.innerHTML = artists[shuffle_array[shuffle_index]]
     if (images[shuffle_array[shuffle_index]] == '1'){
-        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.jpg`
     } else if (images[shuffle_array[shuffle_index]] == '2'){
-        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.png`
     } else {
         art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
     }
@@ -101,9 +105,9 @@ prevClick = function(){
         title.innerHTML = titles[shuffle_array[shuffle_index]]
         artist.innerHTML = artists[shuffle_array[shuffle_index]]
         if (images[shuffle_array[shuffle_index]] == '1'){
-            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.jpg`
         } else if (images[shuffle_array[shuffle_index]] == '2'){
-            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-4)}.png`
         } else {
             art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
         }
