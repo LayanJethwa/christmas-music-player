@@ -25,25 +25,25 @@ const fetchData = async (pathToFile) => {
 };
 
 async function loadFiles(){
-    await fetchData('data/filenames.txt')
+    await fetchData('./data/filenames.txt')
     music = [...arr].slice(0,-1)
     shuffle_array = [...Array(music.length).keys()]
-    await fetchData('data/titles.txt')
+    await fetchData('./data/titles.txt')
     titles = [...arr].slice(0,-1)
-    await fetchData('data/artists.txt')
+    await fetchData('./data/artists.txt')
     artists = [...arr].slice(0,-1)
-    await fetchData('data/images.txt')
+    await fetchData('./data/images.txt')
     images = [...arr].join()
 
-    track.src = `/${folder}/${music[shuffle_array[shuffle_index]]}`
+    track.src = `./${folder}/${music[shuffle_array[shuffle_index]]}`
     title.innerHTML = titles[shuffle_array[shuffle_index]]
     artist.innerHTML = artists[shuffle_array[shuffle_index]]
     if (images[shuffle_array[shuffle_index]] == '1'){
-        art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
     } else if (images[shuffle_array[shuffle_index]] == '2'){
-        art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
     } else {
-        art.src = `data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
+        art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
     }
 }
 
@@ -52,12 +52,12 @@ loadFiles()
 playClick = function(){
     if (!playing) {
         track.play()
-        play.src = "/icons/pause.png"
+        play.src = "./icons/pause.png"
         playhead.style.animationPlayState = "running"
         playhead.style.animationDuration = `${track.duration}s`
     } else {
         track.pause()
-        play.src = "/icons/play.png"
+        play.src = "./icons/play.png"
         playhead.style.animationPlayState = "paused"
     }
     playing = !playing
@@ -67,15 +67,15 @@ play.onclick = playClick;
 nextClick = function(){
     shuffle_index += 1
     shuffle_index = shuffle_index % music.length
-    track.src = `/${folder}/${music[shuffle_array[shuffle_index]]}`
+    track.src = `./${folder}/${music[shuffle_array[shuffle_index]]}`
     title.innerHTML = titles[shuffle_array[shuffle_index]]
     artist.innerHTML = artists[shuffle_array[shuffle_index]]
     if (images[shuffle_array[shuffle_index]] == '1'){
-        art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
     } else if (images[shuffle_array[shuffle_index]] == '2'){
-        art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+        art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
     } else {
-        art.src = `data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
+        art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
     }
 
     document.getAnimations().forEach((animation) => {
@@ -97,15 +97,15 @@ prevClick = function(){
         shuffle_index -= 1
         let remain = shuffle_index % music.length
         shuffle_index = Math.floor(remain >= 0 ? remain : remain + music.length);
-        track.src = `/${folder}/${music[shuffle_array[shuffle_index]]}`
+        track.src = `./${folder}/${music[shuffle_array[shuffle_index]]}`
         title.innerHTML = titles[shuffle_array[shuffle_index]]
         artist.innerHTML = artists[shuffle_array[shuffle_index]]
         if (images[shuffle_array[shuffle_index]] == '1'){
-            art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
+            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.jpg`
         } else if (images[shuffle_array[shuffle_index]] == '2'){
-            art.src = `data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
+            art.src = `./data/images/${music[shuffle_array[shuffle_index]].slice(0,-5)}.png`
         } else {
-            art.src = `data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
+            art.src = `./data/images/default/${Math.floor(Math.random() * default_len + 1)}.png`
         }
     }
 
@@ -132,11 +132,11 @@ shuffleClick = function(){
         current_index = shuffle_array.indexOf(shuffle_index);
         [shuffle_array[current_index], shuffle_array[shuffle_index]] = [shuffle_array[shuffle_index], shuffle_array[current_index]];
 
-        shuffle.src = "/icons/shuffle_white.png"
+        shuffle.src = "./icons/shuffle_white.png"
     } else {
         shuffle_index = shuffle_array[shuffle_index]
         shuffle_array = [...Array(music.length).keys()]
-        shuffle.src = "/icons/shuffle.png"
+        shuffle.src = "./icons/shuffle.png"
     }
     shuffled = !shuffled
 }
