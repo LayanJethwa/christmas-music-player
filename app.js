@@ -148,7 +148,7 @@ shuffle.onclick = shuffleClick;
 
 function seekbarClick(e) {
     var xPos = e.offsetX;
-    var value = (xPos*1000*track.duration)/(0.8*vw*0.97)
+    var value = ((xPos*1000*track.duration)/(0.775*vw*0.965))-1000
     if (isNaN(value) || !isFinite(value)) {
         value = 0
     }
