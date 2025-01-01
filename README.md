@@ -38,12 +38,12 @@ Start the server
 ```bash
   python -m http.server
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Then navigate to *localhost:8000*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Then navigate to http://localhost:8000 in your browser
 
 
 ## Adding music
-- Upload your mp3 files to the christmas-music folder within the root directory  
-  - **OR** create a new folder in the root directory with the music in, then on line **13** of the Python script, and line **19** of the JavaScript file, change *"christmas-music"* to your new folder name
+- Upload your mp3 files to the `christmas-music` folder within the root directory  
+  - **OR** create a new folder in the root directory with the music in, then on line **13** of the Python script, and line **19** of the JavaScript file, change `christmas-music` to your new folder name
 
 - Install dependencies
 
@@ -52,12 +52,12 @@ Start the server
   pip install pillow
   ```
 
-- Run the Python script (*get_music.py*)
+- Run the Python script (`get_music.py`)
 
   ```bash
   python -m get_music.py
   ```
 ## Changing default images
-If you wish to change the default images displayed when album art is not found, edit the contents of the folder */data/images/default* as desired.
+If you wish to change the default images displayed when album art is not found, edit the contents of the folder `/data/images/default` as desired.
 
-You will also need to edit the variable *default_len* to reflect the number of files in that folder; this can be found on line **17** of the JavaScript file.
+You will also need to edit the variable `default_len` to reflect the number of files in that folder; this can be found on line **17** of the JavaScript file.
